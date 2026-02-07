@@ -199,14 +199,15 @@ form button {
 }
 
 /* Form container */
+/* Contact form */
 .contact form {
-  width: 100%;      /* take full width */
-  max-width: 100%;  /* override previous 400px max-width */
   display: flex;
   flex-direction: column;
-  gap: 15px;        /* spacing between inputs */
-  margin: 0 auto;   /* center on desktop */
-  padding: 0;
+  gap: 15px;
+  width: 100%;           /* always full width */
+  max-width: 500px;      /* restrict width on desktop */
+  margin: 0 auto;        /* center on desktop */
+  padding: 0 10px;       /* small padding */
 }
 
 footer {
