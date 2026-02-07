@@ -10,6 +10,54 @@ body {
   color: white;
   min-height: 100vh;
 }
+/* ===== SPLASH SCREEN ===== */
+#splash {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #12002a, #000);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 1.2s ease;
+}
+
+#splash img {
+  width: 320px;
+  animation: splashPulse 2s infinite ease-in-out;
+}
+
+#splash h1 {
+  margin-top: 16px;
+  color: #9b5cff;
+  letter-spacing: 6px;
+  font-size: 2.5rem;
+}
+
+/* Hide site initially */
+#site {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+/* SPLASH EXIT */
+#splash.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* SITE REVEAL */
+#site.show {
+  opacity: 1;
+}
+
+/* Optional: pulse animation */
+@keyframes splashPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
 
 nav {
   display: flex;
@@ -98,23 +146,36 @@ nav ul li a.active {
   cursor: pointer;
 }
 
+.card img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border: 1px #9b5cff solid;
+  margin-bottom: 15px;
+}
+
 form {
-  max-width: 400px;
+  width: 100%;
+  max-width: 400px; /* keeps it from being too wide on desktop */
   margin: auto;
   display: flex;
   flex-direction: column;
+  padding: 0 15px; /* small padding for mobile screens */
 }
 
 form input, form textarea {
+  width: 100%;
   margin: 10px 0;
   padding: 12px;
   border: none;
   border-radius: 8px;
   background: #12002a;
   color: white;
+  font-size: 16px;
 }
 
 form button {
+  width: 100%;
   margin-top: 15px;
   padding: 12px;
   background: #9b5cff;
@@ -122,13 +183,86 @@ form button {
   color: black;
   font-weight: bold;
   cursor: pointer;
+  font-size: 16px;
+}
+
+/* Contact Section */
+.contact {
+  padding: 80px 20px; /* reduce padding for small screens */
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #9b5cff;
+}
+
+/* Form container */
+.contact form {
+  width: 100%;      /* take full width */
+  max-width: 100%;  /* override previous 400px max-width */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;        /* spacing between inputs */
+  margin: 0 auto;   /* center on desktop */
+  padding: 0;
 }
 
 footer {
-  text-align: center;
+  text-align: center;  /* centers the text horizontally */
   padding: 20px;
   opacity: 0.6;
 }
+
+.contact form input,
+.contact form textarea {
+  width: 100%;        /* fill container */
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  background: #12002a;
+  color: white;
+  font-size: 16px;
+}
+
+.contact form button {
+  width: 100%;      /* fill container */
+  padding: 14px;
+  border-radius: 8px;
+  background: #9b5cff;
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact form button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #9b5cff;
+}
+
+/* Media query for small devices */
+@media (max-width: 480px) {
+  .contact {
+    padding: 50px 15px;
+  }
+
+  .contact h2 {
+    font-size: 1.7rem;
+  }
+
+  .contact form input,
+  .contact form textarea,
+  .contact form button {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+
+
 
 /* Fade in animation */
 .fade-in {
@@ -174,10 +308,12 @@ footer {
 
   nav ul {
     margin-top: 15px;
+    flex-direction: column;
+    gap: 10px;
   }
 
   nav ul li {
-    margin: 10px;
+    margin-left: 0;
   }
 
   .hero h2 {
@@ -197,25 +333,25 @@ footer {
   .btn {
     padding: 10px 22px;
   }
+
+  .cards {
+    gap: 20px;
+  }
 }
 
-/* === AMBIENT FUTURISTIC ANIMATIONS === */
-
-/* Slow floating effect */
+/* Animations & other effects (unchanged) */
 @keyframes float {
   0% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
   100% { transform: translateY(0); }
 }
 
-/* Soft pulsing (scale) */
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.04); }
   100% { transform: scale(1); }
 }
 
-/* Very subtle shake */
 @keyframes micro-shake {
   0% { transform: translateX(0); }
   25% { transform: translateX(1px); }
@@ -224,141 +360,14 @@ footer {
   100% { transform: translateX(0); }
 }
 
-/* Apply animations */
-.hero h2 {
-  animation: pulse 4s ease-in-out infinite;
-}
-
-.hero p {
-  animation: float 6s ease-in-out infinite;
-}
-
-.btn {
-  animation: pulse 3s ease-in-out infinite;
-}
-
-.card {
-  animation: float 8s ease-in-out infinite;
-}
-
-.logo {
-  animation: micro-shake 3s infinite;
-}
-
-/* ===== SPLASH SCREEN ===== */
-#splash {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, #12002a, #000);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 1.2s ease;
-}
-
-#splash img {
-  width: 320px;
-  animation: splashPulse 2s infinite ease-in-out;
-}
-
-#splash h1 {
-  margin-top: 15px;
-  color: #9b5cff;
-  letter-spacing: 6px;
-
-}
 
 
-/* Hide site initially */
-#site {
-  opacity: 0;
-  transition: opacity 1.2s ease;
-}
+.hero h2 { animation: pulse 4s ease-in-out infinite; }
+.hero p { animation: float 6s ease-in-out infinite; }
+.btn { animation: pulse 3s ease-in-out infinite; }
+.card { animation: float 8s ease-in-out infinite; }
+.logo { animation: micro-shake 3s infinite; }
 
-/* Splash exit */
-#splash.hide {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Site reveal */
-#site.show {
-  opacity: 1;
-}
-
-.contact-cta {
-  margin-top: 50px;
-  text-align: center;
-}
-
-.cta-btn {
-  padding: 14px 30px;
-  background: linear-gradient(135deg, #9b5cff, #6a3cff);
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 30px;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-.cta-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(155, 92, 255, 0.6);
-}
-.socials {
-  text-align: center;
-  margin-top: 80px;
-}
-
-.social-links {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-
-.social-btn {
-  padding: 15px 35px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 25px;
-  text-decoration: none;
-  color: white;
-  transition: 0.3s ease;
-}
-
-.social-btn.ig {
-  background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
-}
-
-.social-btn.tt {
-  background: linear-gradient(135deg, #000000, #ff0050);
-}
-
-.social-btn:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
-.back-arrow {
-  color: #9b5cff;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 18px;
-  margin-right: 20px;
-  transition: 0.2s ease;
-}
-
-.back-arrow:hover {
-  transform: translateX(-5px);
-  color: #6a3cff;
-}
-
-.social-btn i {
-  margin-right: 10px; /* space between icon & text */
-  font-size: 20px;
-  vertical-align: middle;
-}
+.contact-cta { margin-top: 50px; text-align: center; }
+.cta-btn { padding: 14px 30px; background: linear-gradient(135deg, #9b5cff, #6a3cff); color: white; font-size: 18px; font-weight: bold; border-radius: 30px; text-decoration: none; transition: 0.3s ease; }
+.cta-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(155, 92, 255, 0.6); }
