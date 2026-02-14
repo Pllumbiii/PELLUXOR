@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Code, Share2, Palette, Cpu, Instagram, Facebook, Linkedin, Twitter } from 'lucide-react';
-import { Service, Project, Testimonial } from './types';
+import { Service, Project, Testimonial } from '../types';
 
 export const SERVICES: Service[] = [
   {
