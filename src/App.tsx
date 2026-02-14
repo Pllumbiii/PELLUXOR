@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { ChevronRight, ArrowRight, MousePointer2, Mail, Send, Cpu, Star } from 'lucide-react';
 import { SERVICES, PROJECTS, SOCIALS, TESTIMONIALS } from './constants.tsx';
-import SectionWrapper from './components/SectionWrapper';
-import ServiceCard from './components/ServiceCard';
-import ProjectCard from './components/ProjectCard';
-import Assistant from './components/Assistant';
-import logo from './assets/logo.png';
+import SectionWrapper from '../components/SectionWrapper.tsx';
+import ServiceCard from '../components/ServiceCard.tsx';
+import ProjectCard from '../components/ProjectCard.tsx';
+import Assistant from '../components/Assistant.tsx';
+import logo from '../assets/logo.png';
 
 const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -45,7 +45,7 @@ const App: React.FC = () => {
   className="w-20 h-20 object-contain" 
 />
             </div>
-            <span className="text-2xl font-black tracking-tighter text-white">PËnpLLUXOR</span>
+            <span className="text-2xl font-black tracking-tighter text-white">PËLLUXOR</span>
           </div>
 
           <nav className="hidden md:flex items-center space-x-12 text-sm font-semibold tracking-wide uppercase text-slate-400">
